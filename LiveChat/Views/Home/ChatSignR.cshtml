@@ -1,0 +1,80 @@
+﻿@model string
+@{
+    Layout = "";
+ }
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Live Chat</title>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <style>
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            overflow: auto;
+        }
+        .adminMessege {
+            margin: 10px;
+            color: #FFFFFF;
+            width: fit-content;
+            background-color: #8AB3FF;
+            border-radius: 20px;
+            padding: 10px;
+        }
+        .userMessege {
+            margin: 10px;
+            width: fit-content;
+            background-color: #DDE4FF;
+            border-radius: 20px;
+            padding: 10px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <input type="hidden" value="@Model" name="userName" id="userName" />
+    <div class="row fullscreen">
+        <div class="col-3 text-center" style="background-color: #4D50C4; color: #ffffff; ">
+            <h2 class="mb-5">Online Users</h2>
+            <div id="users" class="mt-5"> 
+                <div class="row">
+                    <img class="col-3" src="~/images/userIcon.png" />
+                    <label class="col-9 text-left">User Name</label>
+                </div>
+                <hr />
+                <div class="row">
+                    <img class="col-3" src="~/images/userIcon.png" />
+                    <label class="col-9 text-left">User Name</label>
+                </div>
+                <hr />
+            </div>
+        </div>
+        <div class="col">
+            <div style="height: 90%; width: 100%; overflow-y:scroll;">
+                <div class="adminMessege">fadfadf</div>
+                <div class="userMessege">fadfadf</div>
+
+            </div>
+            @*<input type="text" placeholder="Messege..." style="position: fixed; bottom: 10px; height: 5%; width: 1000px; border-radius: 30px; background-color: #ffffff; color: #000000; box-shadow: 0 1px 4px 0; "> SEnd</input>*@
+
+            <div class="input-group mb-1" style="position: fixed;  width: 1000px; height: 5%; ">
+                <input id="messageInput" type="text" class="form-control" placeholder="Meseege..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button id="sendButton" class="btn btn-outline-secondary" type="button">Send</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/aspnet/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/chat.js"></script>
+</body>
+</html>
+

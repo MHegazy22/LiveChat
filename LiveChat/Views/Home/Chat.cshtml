@@ -1,0 +1,93 @@
+﻿@model string
+@{
+    Layout = "";
+}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Live Chat</title>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <style>
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            overflow: auto;
+        }
+
+        .sentMessege {
+            margin: 10px;
+            color: #FFFFFF;
+            width: fit-content;
+            background-color: #8AB3FF;
+            border-radius: 20px;
+            padding: 10px;
+        }
+
+        .recievedMessege {
+            position: fixed;
+            margin: 10px;
+            width: fit-content;
+            background-color: #DDE4FF;
+            border-radius: 20px;
+            padding: 10px;
+            right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="hidden" value="" name="recipient" id="recipient" />
+    <div class="row fullscreen">
+        @if (Model == "admin")
+        {
+            <div class="d-none d-md-block col-3 text-center" style="background-color: #4D50C4; color: #ffffff; ">
+                <h2 class="mb-5">Online Users</h2>
+                <div id="users" class="mt-5">
+                    
+                </div>
+            </div>
+        }
+
+        <div class="col text-center justify-content-center">
+            <div id="messegesSection" style="height: 90%; width: 100%; overflow-y:scroll;"></div>
+            
+            <div class="input-group m-1" style="position: fixed;  width:1000px; height: 5%; ">
+                @if (Model == "user")
+                {
+                    <input id="messageInput" type="text" maxlength="100" class="form-control ml-5" placeholder="Meseege..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                }
+                else
+                {
+                    <input id="messageInput" type="text" class="form-control" placeholder="Meseege..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+                }
+                <div class="input-group-append">
+                    <button id="sendButton" class="btn btn-outline-secondary" type="button">Send</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function redirect() {
+            //window.location.href = "@Url.Action("Index","Home")";
+            alert("The chat will be terminated because we have not received a response from you");            
+        }
+        var initial = setTimeout(redirect, 60000);
+
+
+        function sendTo(c) {
+            $("#recipient").val($(c).attr("id"));
+            $("#messegesSection").empty();
+                }
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/aspnet/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/chat.js"></script>
+</body>
+</html>
+

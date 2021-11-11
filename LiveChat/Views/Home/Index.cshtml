@@ -1,0 +1,37 @@
+﻿<div class="signinform">
+    <h1>Live Chat</h1>
+    <!-- container -->
+    <div class="container">
+        <!-- main content -->
+        <div class="w3l-form-info">
+            <div class="w3l_form">
+                <div class="left_grid_info" style="background-color: #DDE4FF;">
+                    <img src="~/images/logingImg2.svg" />
+                </div>
+            </div>
+            <div class="w3_info">
+                <h2 style="margin-left: 90px;">Sign In</h2>
+
+
+                <form>
+                    <p class="continue" style="margin-top:100px"><span>Sign In As :</span></p>
+
+                    <div class="social-login">
+                        <button class="btn btn-primary btn-block" type="button" onclick="login('admin')">ADMIN</button>
+                        <button class="btn btn-primary btn-block" type="button" onclick="login('user')">USER</button>
+                    </div>
+                </form>
+                <script>
+                    function login(role) {
+                        //debugger
+                        //$("#role").val(role);
+                        window.location.href = "@Url.Action("Chat","Home")?role=" + role ;
+                        
+                    }
+                </script>
+            </div>
+        </div>
+        <!-- //main content -->
+    </div>
+    <!-- //container -->
+</div>
